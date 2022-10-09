@@ -158,6 +158,7 @@
 					this.$refs.dialog.open()
 				}
 			},
+			// 注销账户
 			deactivate(){
 				uni.navigateTo({
 					url:"/uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate"

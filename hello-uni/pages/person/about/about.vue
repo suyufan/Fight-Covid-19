@@ -4,16 +4,19 @@
 			<image class="logoImg" src="@/static/personal/touxiang.png"></image>
 			<text class="tip appName">{{about.appName}}</text>
 			<text class="tip">Version {{version}}</text>
+			<view class="qrcode">
+				<uqrcode :size="100" canvas-id="qrcode" value="https://doc.uqrcode.cn"></uqrcode>
+			</view>
 			<!-- <view class="qrcode">
 				<uqrcode :size="100" canvas-id="qrcode" :value="about.download"></uqrcode>
 			</view> -->
-			<!-- <text class="tip">{{$t('about.sacnQR')}} {{about.appName}} {{$t('about.client')}}</text> -->
+			<text class="tip">扫描二维码，您的朋友也可以下载 {{about.appName}} 客户端</text>
 		</view>
 		<view class="copyright">
-			<!-- <view class="agreement-box" v-for="(agreement,index) in agreements" :key="index">
+			<view class="agreement-box" v-for="(agreement,index) in agreements" :key="index">
 				<text class="agreement" @click="navigateTo(agreement)">《{{agreement.title}}》</text>
-				<text class="hint" v-if="agreements.length-1>index">{{$t('about.and')}}</text>
-			</view> -->
+				<text class="hint" v-if="agreements.length-1>index">和</text>
+			</view>
 			<text class="hint">Copyright © {{year}}</text>
 			<text class="hint">{{about.company}}</text>
 		</view>
@@ -21,7 +24,36 @@
 </template>
 
 <script>
+	import uniIdPagesConfig from '@/uni_modules/uni-id-pages/config.js';
+	import uqrcode from "@/uni_modules/Sansnn-uQRCode/components/uqrcode/uqrcode"
 	export default {
+		components: {
+			uqrcode
+		},
+		computed: {
+			uniStarterConfig() {
+				console.log("getApp()",getApp());
+				return getApp().globalData.config
+			},
+			agreements() {
+				if(!uniIdPagesConfig.agreements) {
+					return []
+				}
+				let {serviceUrl,privacyUrl} = uniIdPagesConfig.agreements
+				return [
+					{
+						url: serviceUrl,
+						title: '用户服务协议'
+					},{
+						url: privacyUrl,
+						title: '隐私政策条款'
+					}
+				]
+			}
+		},
+		created() {
+			console.log("配置信息",this.uniStarterConfig);
+		},
 		data() {
 			return {
 				version: "V1.0.0",

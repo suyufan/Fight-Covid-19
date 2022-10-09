@@ -1,6 +1,6 @@
 {
     "name" : "hello-uni",
-    "appid" : "__UNI__5B93251",
+    "appid" : "__UNI__918774C",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -49,12 +49,19 @@
     "quickapp" : {},
     /* 快应用特有相关 */
     "mp-weixin" : {
-        /* 小程序特有相关 */
-        "appid" : "",
+        "appid" : "wxb88ecfc4ba39b5b4",
         "setting" : {
             "urlCheck" : false
         },
         "usingComponents" : true
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "title" : "hello-uni",
+        "router" : {
+            "mode" : "history",
+            "base" : "/h5/"
+        },
+        "template" : "template.h5.html"
+    }
 }
