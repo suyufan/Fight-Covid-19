@@ -175,7 +175,48 @@
             
         }
     ],
-	"globalStyle": {
+	// mp-weixin 分包加载处理
+	// 需要从pages中提取出页面数据 作为一个新的跟文件夹目录 之后在subPackages和preloadRule中进行配置
+	"subPackages": [{
+			"root": "pages/person",
+			"pages": [{
+				"path": "about/about"
+			},{
+				"path": "feedback/feedback"
+			},{
+				"path": "read-news-log/read-news-log"
+			},{
+				"path": "settings/settings"
+			}]
+		}, {
+			"root": "pages/index",
+			"pages": [{
+				"path": "index"
+			}]
+		}],
+		"preloadRule": {
+			"pages/index/index": {
+				"network": "all",
+				"packages": ["__APP__"]
+			},
+			"pages/person/about/about": {
+				"network": "all",
+				"packages": ["pages/index"]
+			},
+			"pages/person/feedback/feedback": {
+				"network": "all",
+				"packages": ["pages/index"]
+			},
+			"pages/person/read-news-log/read-news-log": {
+				"network": "all",
+				"packages": ["pages/index"]
+			},
+			"pages/person/settings/settings": {
+				"network": "all",
+				"packages": ["pages/index"]
+			}
+		},
+		"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#38bfff",

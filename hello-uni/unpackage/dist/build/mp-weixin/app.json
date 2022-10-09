@@ -25,7 +25,23 @@
     "uni_modules/uni-id-pages/pages/register/register-admin",
     "pages/person/read-news-log/read-news-log"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pages/person",
+      "pages": [
+        "about/about",
+        "feedback/feedback",
+        "read-news-log/read-news-log",
+        "settings/settings"
+      ]
+    },
+    {
+      "root": "pages/index",
+      "pages": [
+        "index"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",
@@ -66,6 +82,38 @@
         "text": "个人中心"
       }
     ]
+  },
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "__APP__"
+      ]
+    },
+    "pages/person/about/about": {
+      "network": "all",
+      "packages": [
+        "pages/index"
+      ]
+    },
+    "pages/person/feedback/feedback": {
+      "network": "all",
+      "packages": [
+        "pages/index"
+      ]
+    },
+    "pages/person/read-news-log/read-news-log": {
+      "network": "all",
+      "packages": [
+        "pages/index"
+      ]
+    },
+    "pages/person/settings/settings": {
+      "network": "all",
+      "packages": [
+        "pages/index"
+      ]
+    }
   },
   "usingComponents": {},
   "sitemapLocation": "sitemap.json"

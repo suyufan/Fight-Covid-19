@@ -1,6 +1,4 @@
 {
-  "navigationBarTitleText": "关于",
-  "enablePullDownRefresh": false,
   "usingComponents": {
     "uqrcode": "/uni_modules/Sansnn-uQRCode/components/uqrcode/uqrcode"
   }
